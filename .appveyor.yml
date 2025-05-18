@@ -1,11 +1,16 @@
-image: Ubuntu1804
-stack: Node 12
-branches: 
-  only:
-    -master
-cache: Node_modules
-install:
-  -npm install
-build: off
-test_script:
-  -npm run lint && npm test
+# image: Ubuntu1804
+# stack: Node 12
+# branches: 
+#   only:
+#     -master
+# cache: Node_modules
+# install:
+#   -npm install
+# build: off
+# test_script:
+#   -npm run lint && npm test
+before build:
+  - nuget restore
+build:
+  verbosity: minimal
+  publish_wap: true
