@@ -1,19 +1,5 @@
 import { getHealth } from "../js/app";
-
-// test("get Heath_1", ()=> {
-//     const res = getHealth("Mar", 60);
-//     expect(res).toBe("Mar is healthy");
-// });
-
-// test("get Heath_2", ()=> {
-//     const res = getHealth("John", 30);
-//     expect(res).toBe("John is wounded");
-// });
-
-// test("get Heath_3", ()=> {
-//     const res = getHealth("Mary", 9);
-//     expect(res).toBe("Mary is critical");
-// });
+import { sortByHealth } from "../js/app";
 
 const dataList = [
     ['Mary', 9, "Mary is critical"],
@@ -26,3 +12,19 @@ handler('testing getHealth with name %s and health %i', (named, health, expected
     const result = getHealth(named, health);
     expect(result).toBe(expected);
 })
+
+test('sort', ()=> {
+    const characters = [
+        { name: 'мечник', health: 10 },
+        { name: 'маг', health: 100 },
+        { name: 'лучник', health: 80 },
+    ];
+    const result = [
+        {name: 'маг', health: 100},
+        {name: 'лучник', health: 80},
+        {name: 'мечник', health: 10},
+    ]
+    const res = sortByHealth(characters)
+    expect(res).toEqual(result)
+})
+
